@@ -2,7 +2,7 @@
 Iniciando en el mundo de los polyfills
 ================
 
-> **Note**. En este proyecto inicio en el mundo de los polyfills
+> **Note**. En este proyecto inicio en el mundo de los polyfills (siento la mezcla de idiomas)
 
 ## ¿Cómo utilizarlo?
 Lo primero que hice fue:

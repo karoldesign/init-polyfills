@@ -8,7 +8,7 @@
         const template = documentFotImport.querySelector('template').content;
         const prototypeOfMyElement = Object.create(HTMLElement.prototype);
 
-        prototypeOfMyElement.who = 'my-element';
+        prototypeOfMyElement.who = 'my-elements';
 
         prototypeOfMyElement.createdCallback = function(){
             const shadowRoot = this.createShadowRoot();
