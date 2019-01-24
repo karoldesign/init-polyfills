@@ -3,6 +3,40 @@
 </template>
 <script>
     (function (window, document) {
-        
-    })
+        const documentImport = document;
+        const documentFotImport = documentImport._currentScript || documentImport.currentScript;
+        const template = documentFotImport.querySelector('template').content;
+        const prototypeOfMyElement = Object.create(HTMLElement.prototype);
+
+        prototypeOfMyElement.who = 'element';
+
+        prototypeOfMyElement.createdCallBack = function(){
+            const shadowRoot = this.createShowRoot();
+            const clone = documentImport.importNode(template, true);
+
+            shadowRoot.appendChild(clone);
+            this.strong = shadowRoot.querySelector('strong');
+            if(this.hasAttribute('who')){
+                const who = this.getAttribute('who');
+                this.setWho(who);
+            } else {
+                this.setWho(this.who);
+            }
+        };
+
+        prototypeOfMyElement.attributeChangedCallBack = function(attr, oldValue, newValue){
+            if(attr === 'who'){
+                this.setWho(newValue);
+            }
+        };
+        prototypeOfMyElement.setWho = function(value){
+            this.who = value;
+            this.strong.textContent = this.who;
+        };
+
+        window.myElement = documentImport.registerElement('my-element', {
+            prototype: prototypeOfMyElement
+        });
+
+    })(window, document);
 </script>
